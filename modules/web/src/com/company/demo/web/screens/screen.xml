@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.demo.web.screens.Screen"
+        messagesPack="com.company.demo.web.screens"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <dsContext>
+        <collectionDatasource id="taskSpansDs"
+                              class="com.company.demo.entity.TaskSpan"
+                              refreshMode="NEVER"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <chart:ganttChart id="ganttChart"
+                          additionalSegmentFields="task"
+                          balloonDateFormat="JJ:NN"
+                          brightnessStep="10"
+                          categoryField="category"
+                          colorField="color"
+                          columnWidth="0.5"
+                          datasource="taskSpansDs"
+                          durationField="duration"
+                          height="100%"
+                          marginRight="70"
+                          period="hh"
+                          rotate="true"
+                          segmentsField="segments"
+                          startDate="2015-01-01"
+                          startField="start"
+                          theme="LIGHT"
+                          width="100%">
+            <chart:graph balloonText="[[task]]: [[open]] [[value]]"
+                         fillAlphas="1"/>
+            <chart:valueAxis maximum="31"
+                             minimum="7"
+                             type="DATE"/>
+            <chart:chartScrollbar/>
+            <chart:chartCursor cursorAlpha="0.1"
+                               fullWidth="true"
+                               valueBalloonsEnabled="false"
+                               valueLineBalloonEnabled="true"
+                               valueLineEnabled="true"/>
+        </chart:ganttChart>
+    </layout>
+</window>
